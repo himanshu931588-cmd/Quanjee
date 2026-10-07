@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Mishra | 3D Portfolio</title>
+    <meta name="description" content="Portfolio of Himanshu Mishra, Cloud Engineer and AI Enthusiast.">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/phosphor-icons@1.4.2/src/css/icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <h1>LOADING LEONIDA... <span id="progress">0</span>%</h1>
+            <p>Welcome to the Vice City of Code</p>
+        </div>
+        <button id="start-btn" style="display: none;">ENTER THE ADVENTURE</button>
+    </div>
+
+    <!-- 3D Canvas Background -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- UI Overlay -->
+    <div class="ui-overlay" id="ui-overlay" style="opacity: 0; pointer-events: none;">
+        
+        <!-- GTA Style HUD -->
+        <div class="gta-hud">
+            <div class="hud-top-right">
+                <div class="hud-cash">$999,999</div>
+                <div class="hud-weapon">
+                    <i class="ph-laptop"></i> <!-- Weapon/Tool -->
+                </div>
+            </div>
+            <div class="hud-wanted" id="wanted-stars">
+                <i class="ph-star"></i>
+                <i class="ph-star"></i>
+                <i class="ph-star"></i>
+                <i class="ph-star"></i>
+                <i class="ph-star"></i>
+            </div>
+        </div>
+
+        <!-- GTA GPS / Map -->
+        <div class="gta-map">
+            <div class="map-header"><i class="ph-map-trifold"></i> GPS LOCATIONS</div>
+            <ul class="map-locations">
+                <li data-target="#hero" data-cam-x="0" data-cam-y="2" data-cam-z="10"><i class="ph-house"></i> Safehouse (Home)</li>
+                <li data-target="#about" data-cam-x="30" data-cam-y="5" data-cam-z="0"><i class="ph-buildings"></i> Vice Beach (About)</li>
+                <li data-target="#projects" data-cam-x="-30" data-cam-y="10" data-cam-z="-20"><i class="ph-city"></i> Downtown (Projects)</li>
+                <li data-target="#contact" data-cam-x="0" data-cam-y="15" data-cam-z="20"><i class="ph-island"></i> Starfish Island (Contact)</li>
+            </ul>
+        </div>
+
+        <nav class="navbar">
+            <div class="logo">HM<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="scroll-container">
+            <section id="hero" class="panel">
+                <div class="content-box glass">
+                    <p class="greeting">Hi, I am</p>
+                    <h1 class="name">Himanshu Mishra</h1>
+                    <h2 class="title">Cloud Engineer & AI Enthusiast</h2>
+                    <p class="bio">
+                        Building scalable infrastructure and intelligent systems.
+                        <br>Scroll down to explore my universe.
+                    </p>
+                    <div class="action-buttons">
+                        <button id="wanted-btn" class="gta-button">COMMIT CRIME (Add Star)</button>
+                    </div>
+                    <div class="scroll-indicator">
+                        <i class="ph-caret-double-down"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="panel">
+                <div class="content-box glass">
+                    <h2>About Me</h2>
+                    <p>I am a passionate <strong>Cloud Engineer</strong> and <strong>AI & Machine Learning Enthusiast</strong>. I love turning complex problems into elegant, efficient, and user-friendly solutions.</p>
+                    <p>Currently diving deep into Java and building sustainable software. When I'm not coding, I'm creating content and exploring new tech.</p>
+                    <div class="anatomy-container">
+                        <div class="anatomy-item theme-blue">
+                            <div class="anatomy-icon"><i class="ph-cloud-network"></i></div>
+                            <div class="anatomy-title">Cloud Core</div>
+                            <div class="anatomy-desc">Architecting scalable and secure infrastructure.</div>
+                        </div>
+                        <div class="anatomy-item theme-pink">
+                            <div class="anatomy-icon"><i class="ph-brain"></i></div>
+                            <div class="anatomy-title">AI & ML</div>
+                            <div class="anatomy-desc">Training neural networks and exploring intelligence.</div>
+                        </div>
+                        <div class="anatomy-item theme-yellow">
+                            <div class="anatomy-icon"><i class="ph-code"></i></div>
+                            <div class="anatomy-title">Development</div>
+                            <div class="anatomy-desc">Writing clean, efficient C/C++, Python & Java.</div>
+                        </div>
+                        <div class="anatomy-item theme-green">
+                            <div class="anatomy-icon"><i class="ph-leaf"></i></div>
+                            <div class="anatomy-title">Sustainable</div>
+                            <div class="anatomy-desc">Passionate about eco-friendly engineering.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="panel">
+                <div class="content-box glass w-large">
+                    <h2>Featured Projects</h2>
+                    <div class="projects-list">
+                        <a href="https://github.com/himanshu931588-cmd/BASGUARD" target="_blank" class="project-item">
+                            <h3><i class="ph-folder-star"></i> BASGUARD</h3>
+                            <p>Offline, edge-deployed AI system for tracking astronaut experiment steps aboard BAS/ISS payloads.</p>
+                            <span class="project-lang"><i class="ph-file-code"></i> Python</span>
+                        </a>
+                        <a href="https://github.com/himanshu931588-cmd/KiranaMitra_AI" target="_blank" class="project-item">
+                            <h3><i class="ph-folder-star"></i> KiranaMitra_AI</h3>
+                            <p>An AI-powered application designed to assist and modernize local kirana stores.</p>
+                            <span class="project-lang"><i class="ph-file-code"></i> JavaScript</span>
+                        </a>
+                        <a href="https://github.com/himanshu931588-cmd/Sangyan_Rakshak01" target="_blank" class="project-item">
+                            <h3><i class="ph-folder-star"></i> Sangyan_Rakshak01</h3>
+                            <p>An innovative Python-based project focusing on advanced technology exploration.</p>
+                            <span class="project-lang"><i class="ph-file-code"></i> Python</span>
+                        </a>
+                        <a href="https://github.com/himanshu931588-cmd/dorm-to-dorm-marketplace" target="_blank" class="project-item">
+                            <h3><i class="ph-folder-star"></i> dorm-to-dorm-marketplace</h3>
+                            <p>A marketplace application tailored for college dorm environments.</p>
+                            <span class="project-lang"><i class="ph-file-code"></i> JavaScript</span>
+                        </a>
+                        <a href="https://github.com/himanshu931588-cmd/100_days_100_web_project" target="_blank" class="project-item">
+                            <h3><i class="ph-folder-star"></i> 100_days_100_web_project</h3>
+                            <p>A collection of 100 web projects ranging from basic to intermediate using HTML, CSS, and JS.</p>
+                            <span class="project-lang"><i class="ph-file-code"></i> HTML</span>
+                        </a>
+                        <a href="https://github.com/himanshu931588-cmd/Collegify" target="_blank" class="project-item">
+                            <h3><i class="ph-folder-star"></i> Collegify</h3>
+                            <p>A comprehensive platform designed specifically for the college ecosystem.</p>
+                            <span class="project-lang"><i class="ph-file-code"></i> General</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="panel">
+                <div class="content-box glass text-center">
+                    <h2>Initiate Connection</h2>
+                    <p>Looking for collaboration or want to discuss AI, Cloud, or sustainable tech? I'm always open to talking.</p>
+                    <div class="socials">
+                        <a href="https://github.com/himanshu931588-cmd" target="_blank"><i class="ph-github-logo"></i></a>
+                        <a href="https://linkedin.com/in/himanshu-mishra-2006jan" target="_blank"><i class="ph-linkedin-logo"></i></a>
+                        <a href="https://x.com/HimanshuMi32479" target="_blank"><i class="ph-twitter-logo"></i></a>
+                        <a href="mailto:himanshu931588@gmail.com"><i class="ph-envelope-simple"></i></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Three.js and GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="./three-scene.js"></script>
+</body>
+</html>
